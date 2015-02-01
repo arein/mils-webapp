@@ -1,5 +1,5 @@
 angular.module('milsApp')
-  .controller('SelectFileCtrl', ['$scope', '$location', '$window', '$rootScope', '$upload', 'repository', 'state', function ($scope, $location, $window, $rootScope, $upload, repository, state) {
+  .controller('SelectFileCtrl', ['$scope', '$location', '$window', '$rootScope', '$upload', 'repository', '$state', function ($scope, $location, $window, $rootScope, $upload, repository, $state) {
     $rootScope.bodyClass = "bg-letter";
 
     $scope.$watch('files', function() {
@@ -10,8 +10,8 @@ angular.module('milsApp')
 
         reader.onload = function(readerEvt) {
             var binaryString = readerEvt.target.result;
-            repository.pdf = btoa(binaryString);
-            state.go('EnterAddressCtrl');
+            repository.letter.pdf = btoa(binaryString);
+            $state.go('two');
         };
 
         if (typeof $scope.files !== "undefined" && $scope.files.length > 0) reader.readAsBinaryString($scope.files[0]);
