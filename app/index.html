@@ -12,6 +12,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
     <!-- endbuild -->
   </head>
   <body class="{{ bodyClass }}">
@@ -20,7 +21,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container-fluid" ng-view=""></div>
+    <ui-view class="container-fluid"></ui-view>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -52,15 +53,24 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload-all.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/angular-leaflet/dist/angular-leaflet-directive.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/select_file.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/select_file.js"></script>
+    <script src="scripts/controllers/enter_address.js"></script>
+    <script src="scripts/controllers/map.js"></script>
+    <script src="scripts/services/country_service.js"></script>
+    <script src="scripts/services/repository_service.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

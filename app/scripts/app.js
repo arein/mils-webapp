@@ -13,26 +13,27 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch',
-    'angularFileUpload'
+    'angularFileUpload',
+    'leaflet-directive',
+    'ui.bootstrap'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/select-file', {
-        templateUrl: 'views/select_file.html',
-        controller: 'SelectFileCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function config($stateProvider) {
+    $stateProvider.state("index", {
+       url: "",
+       controller: "SelectFileCtrl",
+       templateUrl: "views/select_file.html"
+    })
+    .state("two", {
+        url: "",
+        controller: "EnterAddressCtrl",
+        templateUrl: "views/enter_address.html"
+    })
+    .state("map", {
+        url: "/map",
+        controller: "MapCtrl",
+        templateUrl: "views/map.html"
+    });
   });

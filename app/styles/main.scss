@@ -76,12 +76,7 @@ html, body {
   }
 }
 
-.bg-letter {
-  background-image: url(/images/letter-border-pattern.png), url(/images/letter-border-pattern.png);
-  background-color: #ecf6fb;
-  background-repeat: repeat-x;
-  background-position: left bottom, left top;
-
+.bg-letter, .map {
   .row {
     height: 100%;
     display: -webkit-flexbox;
@@ -100,6 +95,13 @@ html, body {
     -webkit-justify-content: flex-start;
     justify-content: flex-start;
   }
+}
+
+.bg-letter {
+  background-image: url(/images/letter-border-pattern.png), url(/images/letter-border-pattern.png);
+  background-color: #ecf6fb;
+  background-repeat: repeat-x;
+  background-position: left bottom, left top;
 }
 
 /* Responsive: Portrait tablets and up */
