@@ -16,9 +16,9 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'angularFileUpload',
     'leaflet-directive',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angularFileUpload'
   ])
   .config(function config($stateProvider) {
     $stateProvider.state("index", {
@@ -30,6 +30,11 @@ angular
         url: "",
         controller: "EnterAddressCtrl",
         templateUrl: "views/enter_address.html"
+    })
+    .state("pay", {
+        url: "/pay",
+        controller: "PayCtrl",
+        templateUrl: "views/pay.html"
     })
     .state("map", {
         url: "/map",

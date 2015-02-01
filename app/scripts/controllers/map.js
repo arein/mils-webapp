@@ -42,6 +42,8 @@ angular.module('milsApp')
 
         responsePromise.success(function(data, status, headers, config) {
             console.log(data);
+            $('#uploading-pdf').hide();
+            $('#uploading-completed').show();
             repository.letter.price = data.financialInformation.price;
             repository.letter.id = data._id;
             repository.letter.printCity = data.printInformation.city;

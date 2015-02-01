@@ -1,6 +1,19 @@
 <div class="row" style="z-index:9999;position: relative;">
-    <div class="col-md-offset-4 col-md-4">
-        <progressbar value="55"></progressbar>
+    <div id="uploading-pdf" style="background: #fff;" class="col-xs-12 col-sm-12 col-md-12">
+        <div style="text-align: center;">
+            <h1>Uploading the Pdf</h1>
+        </div>
+        <div class="spinner" style="margin-bottom: 20px;">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <div id="uploading-completed" style="background: #fff; display: none;" class="col-xs-12 col-sm-12 col-md-12">
+        <div style="text-align: center;">
+            <h1>Upload Completed</h1>
+            <a ui-sref="pay">Continue with Payment</a>
+        </div>
     </div>
 </div>
 <leaflet style="position: absolute;top: 0px;" defaults="defaults" center="center" height="100%" width="100%"></leaflet>
