@@ -11,6 +11,19 @@ angular.module('milsApp')
                 "city": "Munich",
                 "zip": "81479",
                 "countryIso": "DE"
-            }
+            },
+            creditcard: {
+                number: "4111 1111 1111 1111",
+                cvv: "153",
+                date: "02/2015"
+            },
+            address: {
+                name: "Alexander-Derek Rein",
+                "line1": "Irmgardstr. 15",
+                "city": "Munich",
+                "postalCode": "81479",
+                "country": "DE"
+            },
+            emailAddress: "adr@ceseros.de"
         };
     });

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-offset-3 col-md-6">
+    <div class="col-md-6">
         <form id="braintree-payment-form">
             <div class="form-group">
                 <label for="number">Card Number</label>
@@ -12,11 +12,46 @@
             <div class="form-group">
                 <label class="control-label">Expiration (MM/YYYY)</label>
                 <div class="controls form-inline">
-                    <input type="text" ng-model="letter.creditcard.month" class="form-control" id="month" placeholder="MM" data-encrypted-name="month" />
-                    <input type="text" ng-model="letter.creditcard.year" class="form-control" id="year" placeholder="YYYY" data-encrypted-name="year" />
+                    <input type="text" ng-model="letter.creditcard.date" class="form-control" id="month" placeholder="MM/YYYY" data-encrypted-name="date" />
                 </div>
             </div>
             <button type="submit" ng-click="submit()" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form id="braintree-payment-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" ng-model="letter.address.name" class="form-control" id="name" placeholder="Name"/>
+            </div>
+            <div class="form-group">
+                <label for="company">Company (Optional)</label>
+                <input type="text" ng-model="letter.address.company" class="form-control" id="company" placeholder="Company (Optional)"/>
+            </div>
+            <div class="form-group">
+                <label for="line1">Street & Number</label>
+                <input type="text" ng-model="letter.address.line1" class="form-control" id="line1" placeholder="Street & Number"/>
+            </div>
+            <div class="form-group">
+                <label for="name">Address Line 2 (Optional)</label>
+                <input type="text" ng-model="letter.address.line2" class="form-control" id="name" placeholder="Address Line 2 (Optional)"/>
+            </div>
+            <div class="form-group">
+                <label for="postalcode">Postal Code</label>
+                <input type="text" ng-model="letter.address.postalCode" class="form-control" id="postalcode" placeholder="Postal Code"/>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" ng-model="letter.address.city" class="form-control" id="city" placeholder="City"/>
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <select class="form-control" ng-model="letter.recipient.country" ng-options="country.countryIso as country.countryName for country in countries"></select>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" ng-model="letter.emailAddress" class="form-control" id="email" placeholder="City"/>
+            </div>
         </form>
     </div>
 </div>

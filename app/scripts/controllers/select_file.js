@@ -3,7 +3,6 @@ angular.module('milsApp')
     $rootScope.bodyClass = "bg-letter";
 
     $scope.$watch('files', function() {
-      console.log($scope.files);
       repository.files = $scope.files;
 
         var reader = new FileReader();

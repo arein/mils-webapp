@@ -1,6 +1,7 @@
 angular.module('milsApp')
     .controller('MapCtrl', ['$scope', '$location', '$window', '$rootScope', '$upload', 'repository', "leafletData", "leafletBoundsHelpers", "$http", function ($scope, $location, $window, $rootScope, $upload, repository, leafletData, leafletBoundsHelpers, $http) {
         $rootScope.bodyClass = "map";
+        $scope.letter = repository.letter;
 
         angular.extend($scope, {
             center: {

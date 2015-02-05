@@ -32,9 +32,14 @@ angular
         templateUrl: "views/enter_address.html"
     })
     .state("pay", {
-        url: "/pay",
+        url: "/pay/:letter_id",
         controller: "PayCtrl",
         templateUrl: "views/pay.html"
+    })
+    .state("thanks", {
+        url: "/thank-you",
+        controller: "ThankYouCtrl",
+        templateUrl: "views/thank_you.html"
     })
     .state("map", {
         url: "/map",

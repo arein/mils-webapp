@@ -27,7 +27,7 @@
       </div>
       <div class="form-group">
         <label for="state">Country</label>
-        <select class="form-control" ng-model="letter.recipient.countryIso" ng-options="country.countryIso as country.countryName for country in countries"></select>
+        <select class="form-control" ng-model="letter.recipient.country" ng-options="country.countryIso as country.countryName for country in countries"></select>
       </div>
       <button type="submit" ng-click="submit()" class="btn btn-default">Submit</button>
     </form>
