@@ -32,7 +32,7 @@ angular.module('milsApp')
             console.log(data);
             $scope.letter.recipient.zip = data.zipcode;
             $scope.letter.recipient.state = data.stateCode;
-            $scope.letter.recipient.country = data.countryCode;
+            $scope.letter.recipient.countryIso = data.countryCode;
         });
         responsePromise.error(function(data, status, headers, config) {
             //alert("AJAX failed!");

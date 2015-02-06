@@ -21,7 +21,10 @@
         <div id="uploading-completed" style="display: none;">
             <div style="text-align: center;">
                 <h1>Upload Completed</h1>
-                <button style="margin: 30px auto 10px;" ui-sref="pay({ letter_id: letter.id})" type="submit" class="btn btn-default">Continue with Payment</button>
+                <div style="margin: 30px auto 10px;">
+                    <button ui-sref="index" class="btn btn-grey">Cancel</button>
+                    <button ui-sref="pay({ letter_id: letter.id})" type="submit" class="btn btn-default">Continue with Payment</button>
+                </div>
             </div>
         </div>
     </div>

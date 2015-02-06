@@ -35,11 +35,13 @@ angular.module('milsApp')
             };
 
             $scope.disabled = true;
-            var responsePromise = $http.post("http://localhost:3000/letters/" + $stateParams.letter_id + "kk", paymentObject);
+            var responsePromise = $http.post("http://localhost:3000/letters/" + $stateParams.letter_id, paymentObject);
+            $(".payment .spinner").show();
 
             responsePromise.success(function(data, status, headers, config) {
                 $scope.disabled = false;
                 $state.go('thanks');
+                $(".payment .spinner").hide();
             });
             responsePromise.error(function(data, status, headers, config) {
                 $scope.disabled = false;
@@ -47,7 +49,7 @@ angular.module('milsApp')
                 $(".payment-header h1").text("Payment Failed");
                 $(".payment-header p").text("Error Message: " + data.error);
                 $(".submit").text("Retry");
-                console.log(data);
+                $(".payment .spinner").hide();
             });
 
         }
