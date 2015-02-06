@@ -6,8 +6,6 @@ angular.module('milsApp')
       $scope.error = "";
       repository.files = $scope.files;
 
-        console.log($scope.files);
-
         if (typeof $scope.files === "undefined") {
             return; // base Case
         }
@@ -23,7 +21,6 @@ angular.module('milsApp')
         }
 
         var file = $scope.files[0];
-        console.log(file);
 
         if (file.type != "application/pdf") {
             $scope.error = "The file you've selected does not appear to be a Pdf.";

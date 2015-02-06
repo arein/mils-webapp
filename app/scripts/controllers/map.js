@@ -137,7 +137,7 @@ function upload(repository, $http, leafletData, $scope, SERVER) {
         });
 
         geoPromise1.error(function(data, status, headers, config) {
-            console.log(data);
+            //console.log(data);
         });
 
         // Show Recipent and Destination on the Map
@@ -151,7 +151,7 @@ function upload(repository, $http, leafletData, $scope, SERVER) {
         });
 
         geoPromise2.error(function(data, status, headers, config) {
-            console.log(data);
+            //console.log(data);
         });
     });
 

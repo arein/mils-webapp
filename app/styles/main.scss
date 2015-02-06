@@ -131,7 +131,7 @@ html, body {
  screen and (-o-min-device-pixel-ratio: 3/2),
  screen and (min-device-pixel-ratio: 1.5) {
   .bg-letter {
-    background-image: url(/images/letter-border-pattern.png), url(/images/letter-border-pattern.png);
+    background-image: url(../images/letter-border-pattern.png), url(../images/letter-border-pattern.png);
     background-size: 519px 12px;
   }
 }

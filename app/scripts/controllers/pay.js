@@ -28,7 +28,13 @@ angular.module('milsApp')
                     obj[item.name] = item.value;
                     return obj;
                 }, {});
-                repository.letter.encryptedCreditCard = content;
+                repository.letter.encryptedCreditCard = {
+                    number: content.number,
+                    cvv: content.cvv,
+                    date: content.date
+                };
+
+
 
                 var paymentObject = {
                     creditCard: content,
