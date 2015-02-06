@@ -7,7 +7,8 @@ angular.module('milsApp')
             center: {
                 lat: 51.505,
                 lng: -0.09,
-                zoom: 10}
+                zoom: 10},
+            zoomControl:false
         });
 
         angular.extend($scope, {
@@ -18,12 +19,14 @@ angular.module('milsApp')
                     weight: 10,
                     color: '#800000',
                     opacity: 1
-                }
+                },
+                zoomControl:false
             }
         });//erickreutz.l24jh22o
 
         leafletData.getMap().then(function(map) {
             //L.GeoIP.centerMapOnPosition(map, 15);
+            map.scrollWheelZoom.disable();
         });
 
         // Query server
