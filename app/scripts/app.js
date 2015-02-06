@@ -46,4 +46,37 @@ angular
         controller: "MapCtrl",
         templateUrl: "views/map.html"
     });
-  });
+  })
+  .run(function($rootScope, $state) {
+        console.log("running app");
+        $rootScope.$on("$stateChangeStart", function(event, toState, toStateParams, fromState, fromStateParams) {
+            if (fromState.name == "map" && toState.name == "two") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "map" && toState.name == "index") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "pay" && toState.name == "map") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "pay" && toState.name == "two") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "pay" && toState.name == "index") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "thanks" && toState.name == "pay") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "thanks" && toState.name == "map") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "thanks" && toState.name == "two") {
+                event.preventDefault();
+                //$state.go("index");
+            } else if (fromState.name == "thanks" && toState.name == "index") {
+                event.preventDefault();
+                //$state.go("index");
+            }
+        });
+});
