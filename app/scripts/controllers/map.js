@@ -12,7 +12,7 @@ angular.module('milsApp')
 
         angular.extend($scope, {
             defaults: {
-                tileLayer: "http://{s}.tiles.mapbox.com/v4/arein.l3llm0d1/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXJlaW4iLCJhIjoiVUZoclFIayJ9.eMMfnrQIzUq7QghFrYk8jQ",
+                tileLayer: "http://{s}.tiles.mapbox.com/v4/arein.l50jo2mo/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXJlaW4iLCJhIjoiVUZoclFIayJ9.eMMfnrQIzUq7QghFrYk8jQ",
                 maxZoom: 14,
                 path: {
                     weight: 10,
@@ -20,7 +20,7 @@ angular.module('milsApp')
                     opacity: 1
                 }
             }
-        });
+        });//erickreutz.l24jh22o
 
         leafletData.getMap().then(function(map) {
             //L.GeoIP.centerMapOnPosition(map, 15);

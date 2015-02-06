@@ -27,7 +27,7 @@ angular
        templateUrl: "views/select_file.html"
     })
     .state("two", {
-        url: "",
+        url: "/enter-address",
         controller: "EnterAddressCtrl",
         templateUrl: "views/enter_address.html"
     })

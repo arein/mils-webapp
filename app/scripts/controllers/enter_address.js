@@ -12,7 +12,7 @@ angular.module('milsApp')
     $scope.addressQueried = false;
     $scope.letter = repository.letter;
     $scope.countries = countries;
-    $rootScope.bodyClass = "";
+    $rootScope.bodyClass = "bg-grey";
 
     $scope.submit = function submit() {
       console.log($scope.letter.recipient);

@@ -1,24 +1,25 @@
+<div class="row" id="enter_address">
+    <div class="col-md-offset-3 col-md-6 col-xs-offset-1 col-xs-10 top">
+        <h1>Enter Recipient Address</h1>
+        <p>Please enter the recipient's address. Depending on the destination country we might add an extra sheet to your letter in order to ensure that the address is visible throught he tiny window on the envelope.</p>
+    </div>
+</div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-offset-3 col-md-6 col-xs-offset-1 col-xs-10">
     <form>
       <div class="form-group">
-        <label for="name">First & Last Name</label>
         <input type="text" ng-model="letter.recipient.name" class="form-control" id="name" placeholder="Enter First & Last Name">
       </div>
       <div class="form-group">
-        <label for="company">Company (Optional)</label>
         <input type="text" ng-model="letter.recipient.company" class="form-control" id="company" placeholder="Company (Optional)">
       </div>
       <div class="form-group">
-        <label for="street">Street & Number</label>
         <input type="text" ng-blur='validateAddress()' ng-model="letter.recipient.address1" class="form-control" id="street" placeholder="Street & Number">
       </div>
       <div class="form-group">
-        <label for="line2">Address Line 2 (Optional)</label>
         <input type="text" ng-model="letter.recipient.address2" class="form-control" id="line2" placeholder="Address Line 2 (Optional)">
       </div>
       <div class="form-group">
-        <label class="control-label">Address Components</label>
         <div class="controls form-inline">
           <input type="text" ng-blur='validateAddress()' ng-model="letter.recipient.city" class="form-control" id="city" placeholder="City">
           <input type="text" ng-model="letter.recipient.zip" class="form-control" id="postalcode" placeholder="Postal Code">
@@ -26,8 +27,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="state">Country</label>
-        <select class="form-control" ng-model="letter.recipient.country" ng-options="country.countryIso as country.countryName for country in countries"></select>
+        <select class="form-control" style="-webkit-appearance: none;" ng-model="letter.recipient.country" ng-options="country.countryIso as country.countryName for country in countries"></select>
       </div>
       <button type="submit" ng-click="submit()" class="btn btn-default">Submit</button>
     </form>
