@@ -48,7 +48,6 @@ angular
     });
   })
   .run(function($rootScope, $state) {
-        //console.log("running app");
         $rootScope.$on("$stateChangeStart", function(event, toState, toStateParams, fromState, fromStateParams) {
 
             if (fromState.name === "" && toState.name !== "index") {
@@ -58,15 +57,12 @@ angular
 
             } else if (!isValidTransition(fromState.name, toState.name)) {
                 event.preventDefault();
-                //$state.go("index", {fallback: true});
+                $state.go("index", {fallback: true});
             }
         });
 });
 
 function isValidTransition(from, to) {
-    return true;
-    console.log("From: " + from);
-    console.log("To: " + to);
     if (from == "" && to == "index") return true;
     if (from == "index" && to == "two") return true;
     if (from == "two" && to == "map") return true;

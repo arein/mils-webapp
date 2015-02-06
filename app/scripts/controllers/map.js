@@ -48,6 +48,10 @@ angular.module('milsApp')
             } else {
                 moveContent($scope.uploadCompleted, !$scope.uploadCompleted, !$scope.uploadCompleted);
             }
+
+            if (typeof $scope.mapObject !== "undefined" && typeof $scope.mapObject.recipient !== "undefined" && $scope.mapObject.printing !== "undefined") {
+                centerMapOnLine($scope, $scope.mapObject.recipient, $scope.mapObject.printing, leafletData);
+            }
         });
 
         upload(repository, $http, leafletData, $scope);
@@ -120,16 +124,16 @@ function upload(repository, $http, leafletData, $scope) {
         repository.letter.price = data.price;
         repository.letter.printInformation = data.printInformation;
 
-        var mapObject = {};
+        $scope.mapObject = {};
 
         // Show Recipent and Destination on the Map
         var geoPromise1 = $http.post("http://localhost:3000/geocode", {address: getRecipientAddress(repository)});
 
         geoPromise1.success(function(data, status, headers, config) {
-            mapObject.recipient = {};
-            mapObject.recipient.latitude = data.latitude;
-            mapObject.recipient.longitude = data.longitude;
-            handleGeocodingCallback(mapObject, leafletData, $scope);
+            $scope.mapObject.recipient = {};
+            $scope.mapObject.recipient.latitude = data.latitude;
+            $scope.mapObject.recipient.longitude = data.longitude;
+            handleGeocodingCallback($scope.mapObject, leafletData, $scope);
         });
 
         geoPromise1.error(function(data, status, headers, config) {
@@ -140,10 +144,10 @@ function upload(repository, $http, leafletData, $scope) {
         var geoPromise2 = $http.post("http://localhost:3000/geocode", {address: getPrintingCompanyAddress(repository)});
 
         geoPromise2.success(function(data, status, headers, config) {
-            mapObject.printing = {};
-            mapObject.printing.latitude = data.latitude;
-            mapObject.printing.longitude = data.longitude;
-            handleGeocodingCallback(mapObject, leafletData, $scope);
+            $scope.mapObject.printing = {};
+            $scope.mapObject.printing.latitude = data.latitude;
+            $scope.mapObject.printing.longitude = data.longitude;
+            handleGeocodingCallback($scope.mapObject, leafletData, $scope);
         });
 
         geoPromise2.error(function(data, status, headers, config) {
@@ -174,7 +178,7 @@ function handleGeocodingCallback(mapInformation, leafletData, $scope) {
 function addPolyLine(leafletData, firstPoint, secondPoint, $scope) {
     leafletData.getMap().then(function(map) {
         //L.GeoIP.centerMapOnPosition(map, 15);
-        //map.scrollWheelZoom.disable();
+        map.scrollWheelZoom.disable();
         var pointA = new L.LatLng(firstPoint.latitude, firstPoint.longitude);
         var pointB = new L.LatLng(secondPoint.latitude, secondPoint.longitude);
         var pointList = [pointA, pointB];
@@ -188,7 +192,7 @@ function addPolyLine(leafletData, firstPoint, secondPoint, $scope) {
         });
         firstpolyline.addTo(map);
         var bounds = new L.LatLngBounds(pointList);
-        map.fitBounds(bounds, {animate: true});
+        centerMapOnLine($scope, firstPoint, secondPoint, leafletData);
     });
 
     $scope.data.markers = {};
@@ -208,5 +212,15 @@ function addPolyLine(leafletData, firstPoint, secondPoint, $scope) {
                 message: "Location of Selected Printing Company"
             }
         }
+    });
+}
+
+function centerMapOnLine($scope, firstPoint, secondPoint, leafletData) {
+    leafletData.getMap().then(function(map) {
+        var pointA = new L.LatLng(firstPoint.latitude, firstPoint.longitude);
+        var pointB = new L.LatLng(secondPoint.latitude, secondPoint.longitude);
+        var pointList = [pointA, pointB];
+        var bounds = new L.LatLngBounds(pointList);
+        map.fitBounds(bounds, {animate: true});
     });
 }
