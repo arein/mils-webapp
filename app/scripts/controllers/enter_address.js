@@ -15,8 +15,10 @@ angular.module('milsApp')
     $rootScope.bodyClass = "bg-grey";
 
     $scope.submit = function submit() {
-      console.log($scope.letter.recipient);
-       $state.go('map');
+      var form = $(".address_form")[0];
+      if(typeof form.checkValidity === "undefined" || form.checkValidity()) {
+        $state.go('map');
+      }
     };
 
     $scope.validateAddress = function validateAddress() {

@@ -6,28 +6,28 @@
 </div>
 <div class="row">
   <div class="col-md-offset-3 col-md-6 col-xs-offset-1 col-xs-10">
-    <form>
+    <form class="address_form">
       <div class="form-group">
-        <input type="text" ng-model="letter.recipient.name" class="form-control" id="name" placeholder="Enter First & Last Name">
+        <input type="text" ng-model="letter.recipient.name" class="form-control" id="name" placeholder="Enter First & Last Name" required>
       </div>
       <div class="form-group">
         <input type="text" ng-model="letter.recipient.company" class="form-control" id="company" placeholder="Company (Optional)">
       </div>
       <div class="form-group">
-        <input type="text" ng-blur='validateAddress()' ng-model="letter.recipient.address1" class="form-control" id="street" placeholder="Street & Number">
+        <input type="text" ng-blur='validateAddress()' ng-model="letter.recipient.address1" class="form-control" id="street" placeholder="Street & Number" required>
       </div>
       <div class="form-group">
         <input type="text" ng-model="letter.recipient.address2" class="form-control" id="line2" placeholder="Address Line 2 (Optional)">
       </div>
       <div class="form-group">
         <div class="controls form-inline">
-          <input type="text" ng-blur='validateAddress()' ng-model="letter.recipient.city" class="form-control" id="city" placeholder="City">
-          <input type="text" ng-model="letter.recipient.zip" class="form-control" id="postalcode" placeholder="Postal Code">
+          <input type="text" ng-blur='validateAddress()' ng-model="letter.recipient.city" class="form-control" id="city" placeholder="City" required>
+          <input type="text" ng-model="letter.recipient.zip" class="form-control" id="postalcode" placeholder="Postal Code" required>
           <input type="text" ng-model="letter.recipient.state" class="form-control" id="state" placeholder="State (Optional)">
         </div>
       </div>
       <div class="form-group">
-        <select class="form-control" style="-webkit-appearance: none;" ng-model="letter.recipient.countryIso" ng-options="country.countryIso as country.countryName for country in countries"></select>
+        <select class="form-control" style="-webkit-appearance: none;" ng-model="letter.recipient.countryIso" ng-options="country.countryIso as country.countryName for country in countries" required></select>
       </div>
       <button ui-sref="index" class="btn btn-grey">Cancel</button>
       <button type="submit" ng-click="submit()" class="btn btn-default">Submit</button>
