@@ -363,6 +363,34 @@ module.exports = function (grunt) {
       }
     },
 
+    ngconstant: {
+      options: {
+          name: 'config',
+          wrap: '"use strict";\n\n{%= __ngModule %}',
+          space: '  '
+      },
+      development: {
+          options: {
+              dest: '<%= yeoman.app %>/scripts/config.js',
+          },
+          constants: {
+              ENV: 'development',
+              SERVER: 'http://localhost:3000',
+              CSEK: 'MIIBCgKCAQEAwAPJTgb9r2B3gaWl9DILU3co12Ova1DerGuatqJbqqM5C3IOXes0L6HILz5lCD4rirWuKhMpxYus1ZuHgdiZTnuYLYe3J20ysLNW4kuX9frvsuI08+AWPY9vN/arVupVjHIgILnVScmlU0oNZMVokm+TIbob7CGkqznt4jLgO+ri4oGvkmC8f3aRwJpKrZtUScyNRcrZPa1vXvD6Z2eYt4WFMbiaWy74Oih9zlfwp+pYSib3DLsDN1a2Fys2A4sQMJMePdnlu691yLQ4yVsQbJG6bRErXu8JeC5Ws2Ku3DwwNLCnQJxwyVxyOArI2jQC3mLUtMf+X74GbPnXdMTiVQIDAQAB'
+          }
+      },
+      production: {
+          options: {
+              dest: '<%= yeoman.dist %>/scripts/config.js'
+          },
+          constants: {
+              ENV: 'production',
+              SERVER: 'https://milsapp.com',
+              CSEK: 'MIIBCgKCAQEAz8xU2/eFLjjzPhPedeMO6GEn5/mg28N6Snaldx8Gsa/40jZkjqCfhkr9DJO2s9XQFEmUozfpXgdPlhpyvF9hG4RaUFEUyqP9oHvF+3+8r5gf/r0i0I6ynfzUUBifwtkEJ42IxXPxYCewXrwmPTqij3GQALVRxSogW/2XBVUCv+nPS339hTXwoTlmW5kuD/poGYmIjyhxNqoCzP8swIRimOqFny5h/Clcy97ub+B+CerSsdJTBcxWJ1kFCyzB90LxLahJKcmv9dnXkCHzg+ObkL7xcdv0i8aCcTomhLBK6xzntru52f4/hy2i1stSTPRrPzvb93u1vP68FEvHiDD7iwIDAQAB'
+          }
+      }
+    },
+
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
@@ -397,6 +425,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'ngconstant:development',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -418,6 +447,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:production',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

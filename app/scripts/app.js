@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'leaflet-directive',
     'ui.bootstrap',
-    'angularFileUpload'
+    'angularFileUpload',
+    'config'
   ])
   .config(function config($stateProvider) {
     $stateProvider.state("index", {

@@ -1,5 +1,5 @@
 angular.module('milsApp')
-    .controller('MapCtrl', ['$scope', '$location', '$window', '$rootScope', '$upload', 'repository', "leafletData", "leafletBoundsHelpers", "$http", function ($scope, $location, $window, $rootScope, $upload, repository, leafletData, leafletBoundsHelpers, $http) {
+    .controller('MapCtrl', ['$scope', '$location', '$window', '$rootScope', '$upload', 'repository', "leafletData", "leafletBoundsHelpers", "$http", "SERVER", function ($scope, $location, $window, $rootScope, $upload, repository, leafletData, leafletBoundsHelpers, $http, SERVER) {
         $rootScope.bodyClass = "map";
         $scope.letter = repository.letter;
 
@@ -16,7 +16,7 @@ angular.module('milsApp')
 
         angular.extend($scope, {
             defaults: {
-                tileLayer: "http://{s}.tiles.mapbox.com/v4/arein.l50jo2mo/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXJlaW4iLCJhIjoiVUZoclFIayJ9.eMMfnrQIzUq7QghFrYk8jQ",
+                tileLayer: "https://{s}.tiles.mapbox.com/v4/arein.l50jo2mo/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXJlaW4iLCJhIjoiVUZoclFIayJ9.eMMfnrQIzUq7QghFrYk8jQ",
                 maxZoom: 14,
                 path: {
                     weight: 10,
@@ -37,7 +37,7 @@ angular.module('milsApp')
         $scope.retry = function() {
           $('#uploading-pdf').show();
           $('#payment-failed').hide();
-          upload(repository, $http, leafletData, $scope);
+          upload(repository, $http, leafletData, $scope, SERVER);
         };
 
         // Move Content to the Top
@@ -54,7 +54,7 @@ angular.module('milsApp')
             }
         });
 
-        upload(repository, $http, leafletData, $scope);
+        upload(repository, $http, leafletData, $scope, SERVER);
 
         /*
         firstPoint = {latitude: 28.635308, longitude: 77.22496};
@@ -64,7 +64,7 @@ angular.module('milsApp')
     }]);
 
 function moveContent(toTop, animate, resize, callback) {
-    var top = $(this).height() / 2 - $(".content").height() / 2;
+    var top = $("html").height() / 2 - $(".content").height() / 2;
     if (toTop === true) top = 0;
     var fixed = top - 21;
     var css_object = {
@@ -92,7 +92,7 @@ function moveMapBelowContent() {
     $('.angular-leaflet-map').css(css_object);
 }
 
-function upload(repository, $http, leafletData, $scope) {
+function upload(repository, $http, leafletData, $scope, SERVER) {
     // Query server
     var letter = {
         pdf: repository.letter.pdf,
@@ -106,7 +106,7 @@ function upload(repository, $http, leafletData, $scope) {
         recipientCountryIso: repository.letter.recipient.countryIso
     };
 
-    var uploadPromise = $http.post("http://localhost:3000/letters", letter);
+    var uploadPromise = $http.post(SERVER + "/letters", letter);
 
     uploadPromise.success(function(data, status, headers, config) {
         $scope.uploadCompleted = true;
@@ -127,7 +127,7 @@ function upload(repository, $http, leafletData, $scope) {
         $scope.mapObject = {};
 
         // Show Recipent and Destination on the Map
-        var geoPromise1 = $http.post("http://localhost:3000/geocode", {address: getRecipientAddress(repository)});
+        var geoPromise1 = $http.post(SERVER + "/geocode", {address: getRecipientAddress(repository)});
 
         geoPromise1.success(function(data, status, headers, config) {
             $scope.mapObject.recipient = {};
@@ -141,7 +141,7 @@ function upload(repository, $http, leafletData, $scope) {
         });
 
         // Show Recipent and Destination on the Map
-        var geoPromise2 = $http.post("http://localhost:3000/geocode", {address: getPrintingCompanyAddress(repository)});
+        var geoPromise2 = $http.post(SERVER + "/geocode", {address: getPrintingCompanyAddress(repository)});
 
         geoPromise2.success(function(data, status, headers, config) {
             $scope.mapObject.printing = {};

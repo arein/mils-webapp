@@ -108,14 +108,14 @@ html, body {
 }
 
 .bg-grey, .map {
-  background-image: url(/images/default-bg.jpg);
+  background-image: url(../images/default-bg.jpg);
   background-color: #F3F1F2;
   background-repeat: repeat;
   background-position: left bottom;
 }
 
 .bg-letter {
-  background-image: url(/images/letter-border-pattern.png), url(/images/letter-border-pattern.png);
+  background-image: url(../images/letter-border-pattern.png), url(../images/letter-border-pattern.png);
   background-color: #ecf6fb;
   background-repeat: repeat-x;
   background-position: left bottom, left top;

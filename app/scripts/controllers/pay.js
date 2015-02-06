@@ -11,13 +11,13 @@
  * Controller of the milsApp
  */
 angular.module('milsApp')
-    .controller('PayCtrl', function ($scope, repository, $stateParams, countries, $http, $rootScope, $state) {
+    .controller('PayCtrl', function ($scope, repository, $stateParams, countries, $http, $rootScope, $state, CSEK, SERVER) {
 
         $scope.countries = countries;
         $rootScope.bodyClass = "bg-grey";
         $scope.disabled = false;
         $scope.letter = repository.letter;
-        var braintree = Braintree.create("MIIBCgKCAQEAwAPJTgb9r2B3gaWl9DILU3co12Ova1DerGuatqJbqqM5C3IOXes0L6HILz5lCD4rirWuKhMpxYus1ZuHgdiZTnuYLYe3J20ysLNW4kuX9frvsuI08+AWPY9vN/arVupVjHIgILnVScmlU0oNZMVokm+TIbob7CGkqznt4jLgO+ri4oGvkmC8f3aRwJpKrZtUScyNRcrZPa1vXvD6Z2eYt4WFMbiaWy74Oih9zlfwp+pYSib3DLsDN1a2Fys2A4sQMJMePdnlu691yLQ4yVsQbJG6bRErXu8JeC5Ws2Ku3DwwNLCnQJxwyVxyOArI2jQC3mLUtMf+X74GbPnXdMTiVQIDAQAB");
+        var braintree = Braintree.create(CSEK);
         braintree.onSubmitEncryptForm('braintree-payment-form');
 
         $scope.submit = function submit() {
@@ -35,7 +35,7 @@ angular.module('milsApp')
             };
 
             $scope.disabled = true;
-            var responsePromise = $http.post("http://localhost:3000/letters/" + $stateParams.letter_id, paymentObject);
+            var responsePromise = $http.post(SERVER + "/letters/" + $stateParams.letter_id, paymentObject);
             $(".payment .spinner").show();
 
             responsePromise.success(function(data, status, headers, config) {

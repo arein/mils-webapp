@@ -8,7 +8,7 @@
  * Controller of the milsApp
  */
 angular.module('milsApp')
-  .controller('EnterAddressCtrl', function ($scope, $http, countries, $rootScope, repository, $state) {
+  .controller('EnterAddressCtrl', function ($scope, $http, countries, $rootScope, repository, $state, SERVER) {
     $scope.addressQueried = false;
     $scope.letter = repository.letter;
     $scope.countries = countries;
@@ -26,7 +26,7 @@ angular.module('milsApp')
         // Query server
         var address = $scope.letter.recipient.address1 + ", " + $scope.letter.recipient.city;
         console.log("address: %s", address);
-        var responsePromise = $http.post("http://localhost:3000/geocode", {address: address});
+        var responsePromise = $http.post(SERVER + "/geocode", {address: address});
 
         responsePromise.success(function(data, status, headers, config) {
             console.log(data);
