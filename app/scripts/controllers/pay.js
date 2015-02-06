@@ -15,6 +15,7 @@ angular.module('milsApp')
 
         $scope.countries = countries;
         $rootScope.bodyClass = "bg-grey";
+        $scope.disabled = false;
         $scope.letter = repository.letter;
         var braintree = Braintree.create("MIIBCgKCAQEAwAPJTgb9r2B3gaWl9DILU3co12Ova1DerGuatqJbqqM5C3IOXes0L6HILz5lCD4rirWuKhMpxYus1ZuHgdiZTnuYLYe3J20ysLNW4kuX9frvsuI08+AWPY9vN/arVupVjHIgILnVScmlU0oNZMVokm+TIbob7CGkqznt4jLgO+ri4oGvkmC8f3aRwJpKrZtUScyNRcrZPa1vXvD6Z2eYt4WFMbiaWy74Oih9zlfwp+pYSib3DLsDN1a2Fys2A4sQMJMePdnlu691yLQ4yVsQbJG6bRErXu8JeC5Ws2Ku3DwwNLCnQJxwyVxyOArI2jQC3mLUtMf+X74GbPnXdMTiVQIDAQAB");
         braintree.onSubmitEncryptForm('braintree-payment-form');
@@ -33,13 +34,19 @@ angular.module('milsApp')
                 emailAddress: repository.letter.emailAddress
             };
 
-            var responsePromise = $http.post("http://localhost:3000/letters/" + $stateParams.letter_id, paymentObject);
+            $scope.disabled = true;
+            var responsePromise = $http.post("http://localhost:3000/letters/" + $stateParams.letter_id + "kk", paymentObject);
 
             responsePromise.success(function(data, status, headers, config) {
+                $scope.disabled = false;
                 $state.go('thanks');
             });
             responsePromise.error(function(data, status, headers, config) {
-                alert("AJAX failed!");
+                $scope.disabled = false;
+                $(".payment .submit").text("Retry");
+                $(".payment-header h1").text("Payment Failed");
+                $(".payment-header p").text("Error Message: " + data.error);
+                $(".submit").text("Retry");
                 console.log(data);
             });
 

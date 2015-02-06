@@ -188,7 +188,7 @@ function addPolyLine(leafletData, firstPoint, secondPoint, $scope) {
         });
         firstpolyline.addTo(map);
         var bounds = new L.LatLngBounds(pointList);
-        map.fitBounds(bounds);
+        map.fitBounds(bounds, {animate: true});
     });
 
     $scope.data.markers = {};

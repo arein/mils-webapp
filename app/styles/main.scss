@@ -237,6 +237,12 @@ h2 {
   border-color: #000;
 }
 
+.btn.disabled, .btn-default.disabled, .btn-default[disabled], .btn.disabled:hover, .btn-default.disabled:hover, .btn-default[disabled]:hover {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #666;
+}
+
 .form-control {
   border-radius: 0px;
 
@@ -257,7 +263,7 @@ h2 {
   box-shadow: none;
 }
 
-#enter_address {
+#enter_address, .payment-header {
   .top {
     text-align: center;
     h1 {
