@@ -8,7 +8,7 @@ angular.module('milsApp')
                 lat: 51.505,
                 lng: -0.09,
                 zoom: 10},
-            zoomControl:false
+            //zoomControl:false
         });
 
         angular.extend($scope, {
@@ -20,13 +20,27 @@ angular.module('milsApp')
                     color: '#800000',
                     opacity: 1
                 },
-                zoomControl:false
+                //zoomControl:false
             }
         });//erickreutz.l24jh22o
 
         leafletData.getMap().then(function(map) {
             //L.GeoIP.centerMapOnPosition(map, 15);
-            map.scrollWheelZoom.disable();
+            //map.scrollWheelZoom.disable();
+            var pointA = new L.LatLng(28.635308, 77.22496);
+            var pointB = new L.LatLng(28.984461, 77.70641);
+            var pointList = [pointA, pointB];
+
+            var firstpolyline = new L.Polyline(pointList, {
+                color: 'red',
+                weight: 3,
+                opacity: 1,
+                smoothFactor: 1
+
+            });
+            firstpolyline.addTo(map);
+            var bounds = new L.LatLngBounds(pointList);
+            map.fitBounds(bounds);
         });
 
         // Query server
