@@ -48,7 +48,7 @@ angular
         templateUrl: "views/map.html"
     });
   })
-  .run(function($rootScope, $state) {
+  .run(function($rootScope, $state, $window) {
         $rootScope.$on("$stateChangeStart", function(event, toState, toStateParams, fromState, fromStateParams) {
 
             if (fromState.name === "" && toState.name !== "index") {
@@ -60,6 +60,14 @@ angular
                 event.preventDefault();
                 $state.go("index", {fallback: true});
             }
+        });
+
+        $window.addEventListener("load",function() {
+            // Set a timeout...
+            setTimeout(function(){
+                // Hide the address bar!
+                $window.scrollTo(0, 1);
+            }, 0);
         });
 });
 
