@@ -24,6 +24,7 @@ angular.module('milsApp')
                 "postalCode": "81479",
                 "country": "DE"
             },
-            emailAddress: "adr@ceseros.de"
+            emailAddress: "adr@ceseros.de",
+            price: "2.22"
         };
     });

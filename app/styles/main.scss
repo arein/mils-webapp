@@ -85,7 +85,7 @@ html, body {
   }
 }
 
-.bg-letter, .map {
+.bg-letter {
   .row {
     height: 95%;
     margin-bottom: -40px;
@@ -107,7 +107,7 @@ html, body {
   }
 }
 
-.bg-grey {
+.bg-grey, .map {
   background-image: url(/images/default-bg.jpg);
   background-color: #F3F1F2;
   background-repeat: repeat;
@@ -145,7 +145,7 @@ html, body {
 }
 
 .spinner {
-  margin: 100px auto;
+  margin: 30px auto 20px;
   width: 50px;
   height: 30px;
   text-align: center;
