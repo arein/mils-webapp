@@ -25,6 +25,34 @@
           <input type="text" ng-model="letter.recipient.zip" class="form-control" id="postalcode" placeholder="Postal Code" required>
           <input type="text" ng-model="letter.recipient.state" class="form-control" id="state" placeholder="State (Optional)">
         </div>
+        <div class="spinner hidden-xs" style="position: relative;margin: -31px 0px 0 290px;display:none;">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+        <div class="spinner hidden-xs" style="position: relative;margin: -31px 0px 0 461px;display:none;">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+        <div class="spinner visible-xs" style="position: relative;margin: -31px 0px 0 316px;display:none;">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+        <div class="spinner visible-xs" style="position: relative;margin:-65px 0px 44px 316px;display:none;">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
       </div>
       <div class="form-group">
         <select class="form-control" style="-webkit-appearance: none;" ng-model="letter.recipient.countryIso" ng-options="country.countryIso as country.countryName for country in countries" required></select>

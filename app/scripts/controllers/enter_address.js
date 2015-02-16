@@ -28,14 +28,17 @@ angular.module('milsApp')
         // Query server
         var address = $scope.letter.recipient.address1 + ", " + $scope.letter.recipient.city;
         var responsePromise = $http.post(SERVER + "/geocode", {address: address});
+        $('.spinner').show();
 
         responsePromise.success(function(data, status, headers, config) {
             $scope.letter.recipient.zip = data.zipcode;
             $scope.letter.recipient.state = data.stateCode;
             $scope.letter.recipient.countryIso = data.countryCode;
+            $('.spinner').hide();
         });
         responsePromise.error(function(data, status, headers, config) {
             //alert("AJAX failed!");
+            $('.spinner').hide();
         });
       }
     };
