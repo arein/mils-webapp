@@ -21,6 +21,8 @@ angular.module('milsApp')
       }
     };
 
+    $('.spinner').hide();
+
     $scope.validateAddress = function validateAddress() {
       if ($scope.addressQueried === false && hasAddress($scope.letter.recipient)) {
         $scope.addressQueried = true;
