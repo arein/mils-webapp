@@ -1,6 +1,3 @@
-/**
- * Created by arein on 01/02/15.
- */
 angular.module('milsApp')
 .service("repository", ['ENV', function Repository(ENV) {
         var repository = this;
